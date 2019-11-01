@@ -1,9 +1,4 @@
-import Adapter from "./ApiConnector";
-import ApiConnector from "./ApiConnector";
-import { CITY_NAME, UNITS } from "./constants";
-import { fips } from "crypto";
+import Worker from "./Worker";
 
-(async () => {
-  const forecast = await ApiConnector.getForecast(CITY_NAME, UNITS);
-  console.log(forecast);
-})();
+const worker = new Worker();
+worker.start();
