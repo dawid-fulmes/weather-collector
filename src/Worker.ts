@@ -1,8 +1,12 @@
 import { WORKER_DELAY_IN_MSEC, CITY_NAME, UNITS } from "./constants";
 import ApiConnector from "./ApiConnector";
+import Comparator from "./Comparator";
 
 class Worker {
-  constructor() {}
+  comparator: Comparator;
+  constructor() {
+    this.comparator = new Comparator();
+  }
 
   start(): void {
     this.sendRequestWithDelay();
@@ -11,7 +15,12 @@ class Worker {
   private sendRequestWithDelay(delayInMSec: number = 0): void {
     setTimeout(async () => {
       const forecast = await ApiConnector.getForecast(CITY_NAME, UNITS);
-      console.log(forecast);
+      if (this.comparator.isNewMeasurementDifferent(forecast)) {
+        console.log(forecast);
+      } else {
+        console.log("No changes");
+      }
+
       this.sendRequestWithDelay(WORKER_DELAY_IN_MSEC);
     }, delayInMSec);
   }
