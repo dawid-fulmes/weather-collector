@@ -14,11 +14,15 @@ class Worker {
 
   private sendRequestWithDelay(delayInMSec: number = 0): void {
     setTimeout(async () => {
-      const forecast = await ApiConnector.getForecast(CITY_NAME, UNITS);
-      if (this.comparator.isNewMeasurementDifferent(forecast)) {
-        console.log(forecast);
-      } else {
-        console.log("No changes");
+      try {
+        const forecast = await ApiConnector.getForecast(CITY_NAME, UNITS);
+        if (this.comparator.isNewMeasurementDifferent(forecast)) {
+          console.log(forecast);
+        } else {
+          console.log("No changes");
+        }
+      } catch (error) {
+        ApiConnector.handleError(error);
       }
 
       this.sendRequestWithDelay(WORKER_DELAY_IN_MSEC);

@@ -11,6 +11,11 @@ class ApiConnector {
     const response = await axios.get(API_URL, { params });
     return response.data;
   }
+
+  public static handleError(error: Error): void {
+    console.log("!! Api connection error occurred !!");
+    console.log(error.message);
+  }
 }
 
 export default ApiConnector;
