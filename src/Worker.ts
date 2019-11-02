@@ -1,11 +1,19 @@
-import { WORKER_DELAY_IN_MSEC, CITY_NAME, UNITS } from "./constants";
+import {
+  WORKER_DELAY_IN_MSEC,
+  CITY_NAME,
+  UNITS,
+  WEATHER_HAS_CHANGED,
+} from "./constants";
 import ApiConnector from "./ApiConnector";
 import Comparator from "./Comparator";
+import EventBus from "./EventBus";
 
 class Worker {
   comparator: Comparator;
+  eventBus: EventBus;
   constructor() {
     this.comparator = new Comparator();
+    this.eventBus = new EventBus();
   }
 
   start(): void {
@@ -17,7 +25,7 @@ class Worker {
       try {
         const forecast = await ApiConnector.getForecast(CITY_NAME, UNITS);
         if (this.comparator.isNewMeasurementDifferent(forecast)) {
-          console.log(forecast);
+          this.eventBus.emit(WEATHER_HAS_CHANGED, forecast);
         } else {
           console.log("No changes");
         }
