@@ -26,8 +26,6 @@ class Worker {
         const forecast = await ApiConnector.getForecast(CITY_NAME, UNITS);
         if (this.comparator.isNewMeasurementDifferent(forecast)) {
           this.eventBus.emit(WEATHER_HAS_CHANGED, forecast);
-        } else {
-          console.log("No changes");
         }
       } catch (error) {
         ApiConnector.handleError(error);

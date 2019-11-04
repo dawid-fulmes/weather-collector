@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 import { CITY_NAME } from "../constants";
+import Forecast, { IForecast } from "./models/Forecast";
+import ForecastFromAPI from "../interfaces/ForecastFromAPI";
 
 class Storage {
   constructor() {}
@@ -10,6 +12,19 @@ class Storage {
     } catch (error) {
       this.handleConnectionError(error);
     }
+  }
+
+  async appendNewForecast(forecastFromAPI: ForecastFromAPI): Promise<void> {
+    const forecast = new Forecast({
+      coord: forecastFromAPI.coord,
+      weather: forecastFromAPI.weather,
+      main: forecastFromAPI.main,
+      visibility: forecastFromAPI.visibility,
+      wind: forecastFromAPI.wind,
+      clouds: forecastFromAPI.clouds,
+      calculationTime: forecastFromAPI.dt,
+    });
+    await forecast.save();
   }
 
   private handleConnectionError(error: Error): void {
