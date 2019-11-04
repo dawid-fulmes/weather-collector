@@ -25,3 +25,5 @@ interface Forecast {
   name: string;
   cod: number;
 }
+
+export default Forecast;

@@ -1,6 +1,7 @@
 import axios from "axios";
 
-import { API_URL, CITY_NAME, API_KEY, UNITS } from "./constants";
+import { API_URL, API_KEY } from "./constants";
+import Forecast from "./interfaces/Forecast";
 
 class ApiConnector {
   public static async getForecast(

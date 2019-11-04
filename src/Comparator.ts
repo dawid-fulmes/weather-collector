@@ -1,4 +1,5 @@
 import isEqual from "lodash.isequal";
+import Forecast from "./interfaces/Forecast";
 
 class Comparator {
   private lastMeasurement: null | Forecast;

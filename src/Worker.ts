@@ -11,9 +11,9 @@ import EventBus from "./EventBus";
 class Worker {
   comparator: Comparator;
   eventBus: EventBus;
-  constructor() {
+  constructor(eventBus: EventBus) {
     this.comparator = new Comparator();
-    this.eventBus = new EventBus();
+    this.eventBus = eventBus;
   }
 
   start(): void {
