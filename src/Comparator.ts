@@ -1,4 +1,4 @@
-import ForecastFromAPI from "./interfaces/ForecastFromAPI";
+import APIForecastUpdate from "./API/APIForecastUpdate";
 import { IForecast } from "./storage/models/Forecast";
 
 class Comparator {
@@ -12,7 +12,7 @@ class Comparator {
     this.lastCalculationTime = lastForecast.calculationTime;
   }
 
-  isNewMeasurementDifferent(newMeasurement: ForecastFromAPI): boolean {
+  isNewMeasurementDifferent(newMeasurement: APIForecastUpdate): boolean {
     if (this.lastCalculationTime === newMeasurement.dt) {
       return false;
     }

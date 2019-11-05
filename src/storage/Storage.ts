@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { CITY_NAME } from "../config/config";
 import Forecast, { IForecast } from "./models/Forecast";
-import ForecastFromAPI from "../interfaces/ForecastFromAPI";
+import APIForecastUpdate from "../API/APIForecastUpdate";
 
 class Storage {
   constructor() {}
@@ -14,7 +14,7 @@ class Storage {
     }
   }
 
-  async appendNewForecast(forecastFromAPI: ForecastFromAPI): Promise<void> {
+  async appendNewForecast(forecastFromAPI: APIForecastUpdate): Promise<void> {
     const forecast = new Forecast({
       coord: forecastFromAPI.coord,
       weather: forecastFromAPI.weather,

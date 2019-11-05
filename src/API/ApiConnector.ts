@@ -1,14 +1,14 @@
 import axios from "axios";
 
-import { API_URL } from "./constants";
-import { API_KEY } from "./config/config";
-import ForecastFromAPI from "./interfaces/ForecastFromAPI";
+import { API_URL } from "../constants";
+import { API_KEY } from "../config/config";
+import APIForecastUpdate from "./APIForecastUpdate";
 
 class ApiConnector {
   static async getForecast(
     city: string,
     units: "metric" | "imperial" | "standard"
-  ): Promise<ForecastFromAPI> {
+  ): Promise<APIForecastUpdate> {
     const params = { q: city, appid: API_KEY, units };
     const response = await axios.get(API_URL, { params });
     return response.data;

@@ -2,7 +2,7 @@ import { EventEmitter } from "events";
 
 import { WEATHER_HAS_CHANGED } from "./constants";
 import Storage from "./storage/Storage";
-import ForecastFromAPI from "./interfaces/ForecastFromAPI";
+import APIForecastUpdate from "./API/APIForecastUpdate";
 
 class EventBus extends EventEmitter {
   private storage: Storage;
@@ -12,7 +12,7 @@ class EventBus extends EventEmitter {
     this.on(WEATHER_HAS_CHANGED, this.handleWeatherChange);
   }
 
-  private handleWeatherChange(forecastFromAPI: ForecastFromAPI): void {
+  private handleWeatherChange(forecastFromAPI: APIForecastUpdate): void {
     this.storage.appendNewForecast(forecastFromAPI);
     const date = new Date();
     console.log(`${date} : New forecast`);

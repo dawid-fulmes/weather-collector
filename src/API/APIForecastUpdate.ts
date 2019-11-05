@@ -1,4 +1,4 @@
-interface ForecastFromAPI {
+interface APIForecastUpdate {
   coord: { lon: number; lat: number };
   weather: [{ id: number; main: string; description: string; icon: string }];
   base: string;
@@ -26,4 +26,4 @@ interface ForecastFromAPI {
   cod: number;
 }
 
-export default ForecastFromAPI;
+export default APIForecastUpdate;
