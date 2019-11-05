@@ -27,6 +27,11 @@ class Storage {
     await forecast.save();
   }
 
+  async getLastForecast(): Promise<IForecast | null> {
+    const lastForecast = await Forecast.findOne().sort({ calculationTime: -1 });
+    return lastForecast;
+  }
+
   private handleConnectionError(error: Error): void {
     console.log("!! MondoDB Connection Error !!");
     console.log(error.message);

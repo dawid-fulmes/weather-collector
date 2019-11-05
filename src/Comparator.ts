@@ -1,23 +1,27 @@
-import isEqual from "lodash.isequal";
-import Forecast from "./interfaces/ForecastFromAPI";
+import ForecastFromAPI from "./interfaces/ForecastFromAPI";
+import { IForecast } from "./storage/models/Forecast";
 
 class Comparator {
-  private lastMeasurement: null | Forecast;
+  private lastCalculationTime: null | number;
 
-  constructor() {
-    this.lastMeasurement = null;
+  constructor(lastForecast: IForecast | null = null) {
+    if (lastForecast === null) {
+      this.lastCalculationTime = null;
+      return;
+    }
+    this.lastCalculationTime = lastForecast.calculationTime;
   }
 
-  isNewMeasurementDifferent(newMeasurement: Forecast): boolean {
-    if (isEqual(this.lastMeasurement, newMeasurement)) {
+  isNewMeasurementDifferent(newMeasurement: ForecastFromAPI): boolean {
+    if (this.lastCalculationTime === newMeasurement.dt) {
       return false;
     }
-    this.updateLastMeasurement(newMeasurement);
+    this.updateLastCalculationTime(newMeasurement.dt);
     return true;
   }
 
-  private updateLastMeasurement(newMeasurement: Forecast): void {
-    this.lastMeasurement = newMeasurement;
+  private updateLastCalculationTime(newCalculationTime: number): void {
+    this.lastCalculationTime = newCalculationTime;
   }
 }
 

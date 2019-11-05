@@ -7,12 +7,13 @@ import {
 import ApiConnector from "./ApiConnector";
 import Comparator from "./Comparator";
 import EventBus from "./EventBus";
+import { IForecast } from "./storage/models/Forecast";
 
 class Worker {
   comparator: Comparator;
   eventBus: EventBus;
-  constructor(eventBus: EventBus) {
-    this.comparator = new Comparator();
+  constructor(eventBus: EventBus, lastForecast: IForecast | null) {
+    this.comparator = new Comparator(lastForecast);
     this.eventBus = eventBus;
   }
 
