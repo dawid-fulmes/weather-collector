@@ -18,6 +18,7 @@ class Worker {
   }
 
   start(): void {
+    console.log("WORKER IS RUNNING");
     this.sendRequestWithDelay();
   }
 
