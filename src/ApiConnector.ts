@@ -1,6 +1,7 @@
 import axios from "axios";
 
-import { API_URL, API_KEY } from "./constants";
+import { API_URL } from "./constants";
+import { API_KEY } from "./config/config";
 import ForecastFromAPI from "./interfaces/ForecastFromAPI";
 
 class ApiConnector {

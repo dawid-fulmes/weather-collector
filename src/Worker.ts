@@ -1,9 +1,5 @@
-import {
-  WORKER_DELAY_IN_MSEC,
-  CITY_NAME,
-  UNITS,
-  WEATHER_HAS_CHANGED,
-} from "./constants";
+import { WORKER_DELAY_IN_MSEC, CITY_NAME, UNITS } from "./config/config";
+import { WEATHER_HAS_CHANGED } from "./constants";
 import ApiConnector from "./ApiConnector";
 import Comparator from "./Comparator";
 import EventBus from "./EventBus";

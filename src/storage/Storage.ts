@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { CITY_NAME } from "../constants";
+import { CITY_NAME } from "../config/config";
 import Forecast, { IForecast } from "./models/Forecast";
 import ForecastFromAPI from "../interfaces/ForecastFromAPI";
 
