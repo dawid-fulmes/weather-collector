@@ -15,7 +15,7 @@ class EventBus extends EventEmitter {
   private handleWeatherChange(forecastFromAPI: ForecastFromAPI): void {
     this.storage.appendNewForecast(forecastFromAPI);
     const date = new Date();
-    console.log(`${date} : NEW FORECAST`);
+    console.log(`${date} : New forecast`);
   }
 }
 
