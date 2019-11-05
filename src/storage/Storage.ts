@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { CITY_NAME } from "../config/config";
-import Forecast, { IForecast } from "./models/Forecast";
-import APIForecastUpdate from "../API/APIForecastUpdate";
+import Forecast, { IForecast } from "../Forecast";
+import APIForecastUpdate from "../api/APIForecastUpdate";
 
 class Storage {
   constructor() {}

@@ -1,5 +1,5 @@
-import APIForecastUpdate from "./API/APIForecastUpdate";
-import { IForecast } from "./storage/models/Forecast";
+import APIForecastUpdate from "./api/APIForecastUpdate";
+import { IForecast } from "./Forecast";
 
 class Comparator {
   private lastCalculationTime: null | number;

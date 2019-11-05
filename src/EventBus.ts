@@ -2,7 +2,7 @@ import { EventEmitter } from "events";
 
 import { WEATHER_HAS_CHANGED } from "./constants";
 import Storage from "./storage/Storage";
-import APIForecastUpdate from "./API/APIForecastUpdate";
+import APIForecastUpdate from "./api/APIForecastUpdate";
 
 class EventBus extends EventEmitter {
   private storage: Storage;

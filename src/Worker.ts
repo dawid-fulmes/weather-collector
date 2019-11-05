@@ -1,9 +1,9 @@
 import { WORKER_DELAY_IN_MSEC, CITY_NAME, UNITS } from "./config/config";
 import { WEATHER_HAS_CHANGED } from "./constants";
-import ApiConnector from "./API/ApiConnector";
+import ApiConnector from "./api/ApiConnector";
 import Comparator from "./Comparator";
 import EventBus from "./EventBus";
-import { IForecast } from "./storage/models/Forecast";
+import { IForecast } from "./Forecast";
 
 class Worker {
   comparator: Comparator;
